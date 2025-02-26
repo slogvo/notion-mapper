@@ -1,25 +1,21 @@
-````markdown
 # Notion Mapper
 
 **Notion Mapper** is a lightweight, reusable React component library built with Vite and TypeScript to map and render Notion API blocks into a beautiful, customizable UI. Whether you're building a blog, documentation site, or any content-driven application using Notion as a CMS, this package simplifies the process of transforming Notion block data into responsive, Tailwind CSS-styled components.
 
 ## Features
 
-- **Full Notion Block Support**: Render all Notion block types (paragraphs, headings, images, code, tables, callouts, and more).
-- **TypeScript Ready**: Fully typed with comprehensive interfaces for Notion blocks.
-- **Tailwind CSS Styling**: Modern, responsive design out of the box with Tailwind CSS.
-- **Vite-Powered**: Fast development and optimized production builds.
-- **Modular Architecture**: Easily extendable and reusable components.
-- **SEO Optimized**: Clean, semantic HTML output for better search engine visibility.
+- <strong>Full Notion Block Support</strong>: Render all Notion block types (paragraphs, headings, images, code, tables, callouts, and more).
+- <strong>TypeScript Ready</strong>: Fully typed with comprehensive interfaces for Notion blocks.
+- <strong>Tailwind CSS Styling</strong>: Modern, responsive design out of the box with Tailwind CSS.
+- <strong>Vite-Powered</strong>: Fast development and optimized production builds.
+- <strong>Modular Architecture</strong>: Easily extendable and reusable components.
+- <strong>SEO Optimized</strong>: Clean, semantic HTML output for better search engine visibility.
 
 ## Installation
 
 Install `notion-mapper` via npm:
 
-```bash
 npm install notion-mapper
-```
-````
 
 Or with Yarn:
 
