@@ -9,7 +9,9 @@ interface PageData {
   content: NotionBlock[];
 }
 
+
 function App() {
+  const apiUrl = import.meta.env.API_ENDPOINT || "http://localhost:3001";
   const [page, setPage] = useState<PageData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -17,7 +19,7 @@ function App() {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          "/api/posts/19f9c9aa356180358b65fe657f6ed700"
+          `${apiUrl}/api/posts/19f9c9aa35618054bafce42c1fc4ac74`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

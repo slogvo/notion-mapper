@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+/* Prism theme (using prism-tomorrow) */
+@import "prismjs/themes/prism-tomorrow.css";
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #011627;
+}

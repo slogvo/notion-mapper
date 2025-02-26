@@ -40,7 +40,7 @@ export const blockMapper = (block: NotionBlock): JSX.Element | null => {
     case "heading_3":
       return <Heading key={block.id} block={block} />;
     case "divider":
-      return <Divider key={block.id} block={block} />;
+      return <Divider key={block.id} />;
     case "image":
       return <Image key={block.id} block={block} />;
     case "code":
@@ -54,7 +54,7 @@ export const blockMapper = (block: NotionBlock): JSX.Element | null => {
     case "to_do":
       return <ToDo key={block.id} block={block} />;
     case "table":
-      return <Table key={block.id} block={block} />;
+      return <Table key={block.id} />;
     case "table_row":
       return <TableRow key={block.id} block={block} />;
     case "callout":
@@ -80,15 +80,15 @@ export const blockMapper = (block: NotionBlock): JSX.Element | null => {
     case "link_preview":
       return <LinkPreview key={block.id} block={block} />;
     case "column":
-      return <Column key={block.id} block={block} />;
+      return <Column key={block.id} />;
     case "column_list":
-      return <ColumnList key={block.id} block={block} />;
+      return <ColumnList key={block.id} />;
     case "synced_block":
-      return <SyncedBlock key={block.id} block={block} />;
+      return <SyncedBlock key={block.id} />;
     case "breadcrumb":
-      return <Breadcrumb key={block.id} block={block} />;
+      return <Breadcrumb key={block.id} />;
     case "table_of_contents":
-      return <TableOfContents key={block.id} block={block} />;
+      return <TableOfContents key={block.id} />;
     case "link_to_page":
       return <LinkToPage key={block.id} block={block} />;
     default:

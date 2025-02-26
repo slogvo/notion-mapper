@@ -1,5 +1,4 @@
-// src/modules/notion-blocks/components/Embed.tsx
-import { EmbedBlock } from "../types";
+import { EmbedBlock } from "@/types/embed.types";
 import { RichText } from "./RichText";
 
 export const Embed = ({ block }: { block: EmbedBlock }) => (
