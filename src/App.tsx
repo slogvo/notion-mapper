@@ -9,9 +9,8 @@ interface PageData {
   content: NotionBlock[];
 }
 
-
 function App() {
-  const apiUrl = import.meta.env.API_ENDPOINT || "http://localhost:3001";
+  const apiUrl = import.meta.env.VITE_API_ENDPOINT;
   const [page, setPage] = useState<PageData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +32,7 @@ function App() {
     };
 
     fetchPost();
-  }, []);
+  }, [apiUrl]);
 
   if (error) return <div className="text-red-500">Error: {error}</div>;
   if (!page) return <div>Loading...</div>;
