@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { CodeBlock } from "../types/code.types";
 import { RichText } from "./RichText";
-import Prism from "prismjs";
+import * as Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-css";

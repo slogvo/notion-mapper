@@ -13,8 +13,6 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), tailwindcss(), dts({
-      insertTypesEntry: true,
-      outDir: "dist",
       include: ["src"],
     }),],
     server: {
@@ -31,13 +29,16 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         "@": resolve(__dirname, "./src"),
+        "@components": resolve(__dirname, "./src/components"),
+        "@utils": resolve(__dirname, "./src/utils"),
+        "@types": resolve(__dirname, "./src/types"),
       },
     },
     build: {
       sourcemap: true,
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
-        name: "VideoPlayer",
+        name: "NotionMapper",
         fileName: (format) => `index.${format === "es" ? "mjs" : "js"}`,
       },
       rollupOptions: {
