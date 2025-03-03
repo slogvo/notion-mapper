@@ -2,8 +2,15 @@
 import { ParagraphBlock } from "../types/paragraph.types";
 import { RichText } from "./RichText";
 
-export const Paragraph = ({ block }: { block: ParagraphBlock }) => (
-  <p className="text-base leading-relaxed mb-4">
-    <RichText richText={block.paragraph.rich_text} />
-  </p>
-);
+export const Paragraph = ({ block }: { block: ParagraphBlock }) => {
+  if (!block?.paragraph || !Array.isArray(block.paragraph.rich_text)) {
+    console.error("Invalid paragraph block:", block);
+    return null;
+  }
+
+  return (
+    <p className="text-base leading-relaxed mb-4">
+      <RichText richText={block?.paragraph?.rich_text} />
+    </p>
+  );
+};

@@ -31,7 +31,19 @@ import {
   LinkToPage,
 } from "@/components";
 
-export const blockMapper = (block: NotionBlock): JSX.Element | null => {
+export const blockMapper = (block: NotionBlock | undefined | null): JSX.Element | null => {
+  if (!block || typeof block !== "object" || !block.type) {
+    console.error("Invalid block:", block);
+    return null;
+  }
+
+  const dataKey = block.type as keyof NotionBlock;
+  const blockData = block[dataKey];
+  if (!blockData && block.type !== "divider" && block.type !== "table" && block.type !== "column" && block.type !== "column_list" && block.type !== "synced_block" && block.type !== "breadcrumb" && block.type !== "table_of_contents") {
+    console.error(`Block data for type "${block.type}" is undefined:`, block);
+    return null;
+  }
+
   switch (block.type) {
     case "paragraph":
       return <Paragraph key={block.id} block={block} />;

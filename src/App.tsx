@@ -18,7 +18,7 @@ function App() {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          `${apiUrl}/api/posts/19f9c9aa35618054bafce42c1fc4ac74`
+          `${apiUrl}/api/posts/19f9c9aa-3561-8054-bafc-e42c1fc4ac74`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
