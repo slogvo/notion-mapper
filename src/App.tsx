@@ -1,5 +1,5 @@
 // src/App.tsx
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { NotionBlock } from "./types";
 import { blockMapper } from "./utils/blockMapper";
 
@@ -41,7 +41,11 @@ function App() {
     <div className="max-w-4xl mx-auto p-5 font-sans">
       <h1 className="text-3xl font-bold mb-5">{page.title}</h1>
       <div className="content">
-        {page.content.map((block) => blockMapper(block))}
+        {page.content.map((block) => (
+          <Fragment key={block.id}>
+            {blockMapper(block)}
+          </Fragment>
+        ))}
       </div>
     </div>
   );

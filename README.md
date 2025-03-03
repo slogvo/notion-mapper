@@ -224,7 +224,7 @@ const CustomParagraph = ({ block }: { block: NotionBlock }) => {
 
 ## 🤝 Contributing
 
-We’d love to have your support! To contribute:
+I’d love to have your support! To contribute:
 
 1. Fork the repository on GitHub.
 2. Create a new branch (`git checkout -b feature/your-feature`).

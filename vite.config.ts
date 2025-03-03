@@ -12,9 +12,16 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
   return {
-    plugins: [react(), tailwindcss(), dts({
-      include: ["src"],
-    }),],
+    plugins: [
+      react(),
+      tailwindcss(),
+      dts({
+        insertTypesEntry: true, 
+        outDir: "dist",
+        include: ["src"],
+        exclude: ["node_modules", "dist"], 
+      }),
+    ],
     server: {
       port: 3000,
       open: true,

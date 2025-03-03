@@ -12,7 +12,7 @@ export const RichText = ({ richText }: RichTextProps) => {
 
   return (
     <>
-      {richText.map((text, index) => {
+      {richText.length > 0 && richText.map((text, index) => {
         if (!text || !text.annotations || !text.text) {
           console.error("Invalid rich text item:", text);
           return null;
@@ -37,10 +37,10 @@ export const RichText = ({ richText }: RichTextProps) => {
                   : undefined,
             }}
           >
-            {text.text.link && text.text.link.url ? (
+            {text?.text?.link?.url ? (
               <a
                 href={text.text.link.url}
-                className="text-primary hover:underline"
+                className="text-blue-500 hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
