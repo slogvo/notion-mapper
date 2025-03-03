@@ -1,6 +1,6 @@
 {
   "name": "notion-mapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A library for mapping Notion blocks to React components",
   "main": "dist/index.js",
