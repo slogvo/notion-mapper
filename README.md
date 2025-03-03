@@ -1,14 +1,14 @@
-# Notion-Mapper: A Library to Map Notion Blocks to React Components
+# react-notion-blocks: A Library to Map Notion Blocks to React Components
 
 **[Tiếng Việt](#)** *(Click here for Vietnamese version: [README.vi.md](README.vi.md))*
 
-Hello! **Notion-Mapper** is a handy library designed to help you **map Notion blocks to React components** quickly and effortlessly. If you're looking to build a **blog**, **portfolio**, or any project related to writing in the spirit of **"build in public"**, while integrating content from the **Notion API** into your React app, this tool is for you! From paragraphs, headings, images, tables, to code blocks, everything is supported out of the box!
+Hello! **react-notion-blocks** is a handy library designed to help you **map Notion blocks to React components** quickly and effortlessly. If you're looking to build a **blog**, **portfolio**, or any project related to writing in the spirit of **"build in public"**, while integrating content from the **Notion API** into your React app, this tool is for you! From paragraphs, headings, images, tables, to code blocks, everything is supported out of the box!
 
 ---
 
-## 🌟 Why Use Notion-Mapper?
+## 🌟 Why Use react-notion-blocks?
 
-When embarking on a **build in public** journey—a popular trend in the developer community where you publicly share your project-building process—creating a blog to document your progress is a fantastic idea. A blog not only helps you connect with the community but also serves as a space to store your experiences, knowledge, and stories. To do that, you'll need a suitable **CMS (Content Management System)**. Let's explore why **Notion** stands out as a great choice and how **Notion-Mapper** simplifies integrating Notion into your blog.
+When embarking on a **build in public** journey—a popular trend in the developer community where you publicly share your project-building process—creating a blog to document your progress is a fantastic idea. A blog not only helps you connect with the community but also serves as a space to store your experiences, knowledge, and stories. To do that, you'll need a suitable **CMS (Content Management System)**. Let's explore why **Notion** stands out as a great choice and how **react-notion-blocks** simplifies integrating Notion into your blog.
 
 ### 1. Popular CMS Options for Blogging
 There are several CMS platforms you can choose to manage content for your blog. Here are some popular options along with their key characteristics:
@@ -84,8 +84,8 @@ When you call the **Notion API** to retrieve content (e.g., the content of a pag
 - **Data Structure**: Each block has a `type` (block type) and corresponding data (e.g., `rich_text` for text, `url` for images). While this structure is flexible, it can be complex since you need to handle each block type individually to render it into UI components.
 - **Challenge**: Rendering this data in React manually requires parsing each block’s type and converting it into components (e.g., `<h1>`, `<p>`, `<img>`), which can be time-consuming, especially with many block types.
 
-### 4. The Role of Notion-Mapper
-This is where **Notion-Mapper** comes in handy:
+### 4. The Role of react-notion-blocks
+This is where **react-notion-blocks** comes in handy:
 
 - **Automated Mapping**: The library handles the entire process of parsing and mapping Notion blocks to React components, saving you time and effort.
 - **Comprehensive Support**: It supports most common Notion block types, from paragraphs, headings, lists, images to tables and code blocks.
@@ -124,13 +124,13 @@ You can simply use:
 Install the library via NPM with this command:
 
 ```bash
-npm install notion-mapper
+npm install react-notion-blocks
 ```
 
 Or if you use Yarn:
 
 ```bash
-yarn add notion-mapper
+yarn add react-notion-blocks
 ```
 
 ---
@@ -142,8 +142,8 @@ yarn add notion-mapper
 The `blockMapper` function helps you render an entire list of Notion blocks:
 
 ```typescript
-import { blockMapper } from "notion-mapper";
-import { NotionBlock } from "notion-mapper/types";
+import { blockMapper } from "react-notion-blocks";
+import { NotionBlock } from "react-notion-blocks/types";
 
 const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
   return (
@@ -159,8 +159,8 @@ const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
 If you want to customize, you can import specific components:
 
 ```typescript
-import { Paragraph, Heading } from "notion-mapper";
-import { NotionBlock } from "notion-mapper/types";
+import { Paragraph, Heading } from "react-notion-blocks";
+import { NotionBlock } from "react-notion-blocks/types";
 
 const CustomBlock = ({ block }: { block: NotionBlock }) => {
   if (block.type === "paragraph") {
@@ -180,8 +180,8 @@ Here’s how to fetch data from Notion and display it in React:
 
 ```typescript
 import { useEffect, useState } from "react";
-import { blockMapper } from "notion-mapper";
-import { NotionBlock } from "notion-mapper/types";
+import { blockMapper } from "react-notion-blocks";
+import { NotionBlock } from "react-notion-blocks/types";
 
 const BlogPage = () => {
   const [blocks, setBlocks] = useState<NotionBlock[]>([]);
@@ -209,7 +209,7 @@ const BlogPage = () => {
 You can add your own styling by wrapping components:
 
 ```typescript
-import { Paragraph } from "notion-mapper";
+import { Paragraph } from "react-notion-blocks";
 
 const CustomParagraph = ({ block }: { block: NotionBlock }) => {
   return (

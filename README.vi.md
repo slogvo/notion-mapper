@@ -1,14 +1,14 @@
-# Notion-Mapper: Thư viện ánh xạ Notion Blocks thành React Components
+# React Notion Block: Thư viện ánh xạ Notion Blocks thành React Components
 
 **[English](#)** *(Click here for English version: [README.md](README.md))*
 
-**Notion-Mapper** là một thư viện tiện lợi giúp bạn **chuyển đổi các block từ Notion thành React components** một cách nhanh chóng và dễ dàng. Nếu bạn đang muốn xây dựng một **blog**, **portfolio**, hoặc bất kỳ dự án nào liên quan đến viết lách trong tinh thần **"build in public"**, đồng thời tích hợp nội dung từ **Notion API** vào ứng dụng React, thì đây chính là công cụ dành cho bạn! Từ đoạn văn, tiêu đề, hình ảnh, bảng đến mã nguồn, tất cả đều được hỗ trợ sẵn!
+**React Notion Block** là một thư viện tiện lợi giúp bạn **chuyển đổi các block từ Notion thành React components** một cách nhanh chóng và dễ dàng. Nếu bạn đang muốn xây dựng một **blog**, **portfolio**, hoặc bất kỳ dự án nào liên quan đến viết lách trong tinh thần **"build in public"**, đồng thời tích hợp nội dung từ **Notion API** vào ứng dụng React, thì đây chính là công cụ dành cho bạn! Từ đoạn văn, tiêu đề, hình ảnh, bảng đến mã nguồn, tất cả đều được hỗ trợ sẵn!
 
 ---
 
-## 🌟 Vì sao bạn nên dùng Notion-Mapper?
+## 🌟 Vì sao bạn nên dùng React Notion Block?
 
-Khi bạn bắt đầu hành trình **build in public** – một xu hướng phổ biến trong cộng đồng nhà phát triển, nơi bạn chia sẻ quá trình phát triển dự án của mình công khai – việc xây dựng một blog để ghi lại tiến trình là một ý tưởng tuyệt vời. Blog không chỉ giúp bạn kết nối với cộng đồng mà còn là nơi lưu giữ kinh nghiệm, kiến thức và câu chuyện của bạn. Để làm được điều đó, bạn cần một **CMS (Content Management System)** phù hợp. Dưới đây, mình sẽ giải thích lý do tại sao **Notion** là một lựa chọn đáng cân nhắc, và cách **Notion-Mapper** giúp bạn tích hợp Notion vào blog của mình dễ dàng hơn.
+Khi bạn bắt đầu hành trình **build in public** – một xu hướng phổ biến trong cộng đồng nhà phát triển, nơi bạn chia sẻ quá trình phát triển dự án của mình công khai – việc xây dựng một blog để ghi lại tiến trình là một ý tưởng tuyệt vời. Blog không chỉ giúp bạn kết nối với cộng đồng mà còn là nơi lưu giữ kinh nghiệm, kiến thức và câu chuyện của bạn. Để làm được điều đó, bạn cần một **CMS (Content Management System)** phù hợp. Dưới đây, mình sẽ giải thích lý do tại sao **Notion** là một lựa chọn đáng cân nhắc, và cách **React Notion Block** giúp bạn tích hợp Notion vào blog của mình dễ dàng hơn.
 
 ### 1. Các lựa chọn CMS phổ biến cho blog
 Có nhiều nền tảng CMS mà bạn có thể sử dụng để quản lý nội dung cho blog của mình. Dưới đây là một số lựa chọn phổ biến, cùng với những đặc điểm chính để bạn cân nhắc:
@@ -84,8 +84,8 @@ Khi bạn gọi **Notion API** để lấy nội dung (ví dụ: nội dung củ
 - **Phân tích dữ liệu**: Mỗi block có một `type` (loại block) và dữ liệu tương ứng (như `rich_text` cho văn bản, `url` cho hình ảnh). Cấu trúc này rất linh hoạt nhưng cũng khá phức tạp, vì bạn cần xử lý từng loại block riêng để render thành giao diện.
 - **Thách thức**: Nếu làm thủ công, bạn phải viết code để kiểm tra `type` của mỗi block và chuyển đổi nó thành các thành phần giao diện (như `<h1>`, `<p>`, `<img>`). Điều này có thể mất nhiều thời gian, đặc biệt khi bạn làm việc với nhiều loại block khác nhau.
 
-### 4. Vai trò của Notion-Mapper
-Đây chính là lúc **Notion-Mapper** trở nên hữu ích:
+### 4. Vai trò của React Notion Block
+Đây chính là lúc **React Notion Block** trở nên hữu ích:
 
 - **Tự động ánh xạ**: Thư viện này xử lý toàn bộ quá trình phân tích và ánh xạ các block từ Notion thành React components, giúp bạn tiết kiệm thời gian và công sức.
 - **Hỗ trợ đa dạng**: Từ đoạn văn, tiêu đề, danh sách, hình ảnh đến bảng và mã nguồn, thư viện hỗ trợ hầu hết các loại block phổ biến của Notion.
@@ -124,13 +124,13 @@ Bạn chỉ cần gọi:
 Bạn có thể cài đặt thư viện qua NPM bằng lệnh:
 
 ```bash
-npm install notion-mapper
+npm install React notion Block
 ```
 
 Hoặc dùng Yarn:
 
 ```bash
-yarn add notion-mapper
+yarn add React notion Block
 ```
 
 ---
@@ -142,8 +142,8 @@ yarn add notion-mapper
 Hàm `blockMapper` sẽ giúp bạn render toàn bộ danh sách block từ Notion:
 
 ```typescript
-import { blockMapper } from "notion-mapper";
-import { NotionBlock } from "notion-mapper/types";
+import { blockMapper } from "React notion Block";
+import { NotionBlock } from "React notion Block/types";
 
 const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
   return (
@@ -159,8 +159,8 @@ const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
 Nếu muốn cá nhân hóa, bạn có thể import từng component cụ thể:
 
 ```typescript
-import { Paragraph, Heading } from "notion-mapper";
-import { NotionBlock } from "notion-mapper/types";
+import { Paragraph, Heading } from "React notion Block";
+import { NotionBlock } from "React notion Block/types";
 
 const CustomBlock = ({ block }: { block: NotionBlock }) => {
   if (block.type === "paragraph") {
@@ -180,8 +180,8 @@ Dưới đây là cách lấy dữ liệu từ Notion và hiển thị trong Rea
 
 ```typescript
 import { useEffect, useState } from "react";
-import { blockMapper } from "notion-mapper";
-import { NotionBlock } from "notion-mapper/types";
+import { blockMapper } from "react-notion-blocks";
+import { NotionBlock } from "react-notion-blocks/types";
 
 const BlogPage = () => {
   const [blocks, setBlocks] = useState<NotionBlock[]>([]);
@@ -209,7 +209,7 @@ const BlogPage = () => {
 Bạn có thể thêm phong cách riêng bằng cách bao bọc component:
 
 ```typescript
-import { Paragraph } from "notion-mapper";
+import { Paragraph } from "react-notion-blocks";
 
 const CustomParagraph = ({ block }: { block: NotionBlock }) => {
   return (

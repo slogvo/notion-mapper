@@ -13,14 +13,14 @@
 
 ## Installation
 
-Install `notion-mapper` via npm:
+Install `react-notion-blocks` via npm:
 
-npm install notion-mapper
+npm install react-notion-blocks
 
 Or with Yarn:
 
 ```bash
-yarn add notion-mapper
+yarn add react-notion-blocks
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ yarn add notion-mapper
 
 ```typescript
 import { useEffect, useState } from "react";
-import { NotionBlock, blockMapper } from "notion-mapper";
+import { NotionBlock, blockMapper } from "react-notion-blocks";
 
 interface PageData {
   id: string;
@@ -112,7 +112,7 @@ export default App;
 3. **Install Notion Mapper**:
 
    ```bash
-   npm install notion-mapper
+   npm install react-notion-blocks
    ```
 
 4. **Fetch Notion Data**: Integrate with your Notion API backend to retrieve block data.
@@ -192,4 +192,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For issues or suggestions, please open an issue on our [GitHub repository](https://github.com/slogvo/notion-mapper).
+For issues or suggestions, please open an issue on our [GitHub repository](https://github.com/slogvo/react-notion-blocks).
