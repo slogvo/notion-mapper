@@ -1,13 +1,52 @@
 {
   "name": "notion-mapper",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "A library for mapping Notion blocks to React components",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts", 
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts", 
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "keywords": [
+    "notion",
+    "notion-blog",
+    "react",
+    "react-19",
+    "vite",
+    "react-vite",
+    "mapper",
+    "blocks"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slogvo/notion-mapper"
+  },
+  "author": "Long Vo",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
@@ -31,6 +70,7 @@
     "tailwindcss": "^4.0.9",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.3"
   }
 }
