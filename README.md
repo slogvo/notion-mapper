@@ -1,195 +1,232 @@
-# Notion Mapper
+# Notion-Mapper: A Library to Map Notion Blocks to React Components
 
-**Notion Mapper** is a lightweight, reusable React component library built with Vite and TypeScript to map and render Notion API blocks into a beautiful, customizable UI. Whether you're building a blog, documentation site, or any content-driven application using Notion as a CMS, this package simplifies the process of transforming Notion block data into responsive, Tailwind CSS-styled components.
+**[Tiếng Việt](#)** *(Click here for Vietnamese version: [README.vi.md](README.vi.md))*
 
-## Features
+Hello! **Notion-Mapper** is a handy library designed to help you **map Notion blocks to React components** quickly and effortlessly. If you're looking to build a **blog**, **portfolio**, or any project related to writing in the spirit of **"build in public"**, while integrating content from the **Notion API** into your React app, this tool is for you! From paragraphs, headings, images, tables, to code blocks, everything is supported out of the box!
 
-- <strong>Full Notion Block Support</strong>: Render all Notion block types (paragraphs, headings, images, code, tables, callouts, and more).
-- <strong>TypeScript Ready</strong>: Fully typed with comprehensive interfaces for Notion blocks.
-- <strong>Tailwind CSS Styling</strong>: Modern, responsive design out of the box with Tailwind CSS.
-- <strong>Vite-Powered</strong>: Fast development and optimized production builds.
-- <strong>Modular Architecture</strong>: Easily extendable and reusable components.
-- <strong>SEO Optimized</strong>: Clean, semantic HTML output for better search engine visibility.
+---
 
-## Installation
+## 🌟 Why Use Notion-Mapper?
 
-Install `notion-mapper` via npm:
+When embarking on a **build in public** journey—a popular trend in the developer community where you publicly share your project-building process—creating a blog to document your progress is a fantastic idea. A blog not only helps you connect with the community but also serves as a space to store your experiences, knowledge, and stories. To do that, you'll need a suitable **CMS (Content Management System)**. Let's explore why **Notion** stands out as a great choice and how **Notion-Mapper** simplifies integrating Notion into your blog.
 
+### 1. Popular CMS Options for Blogging
+There are several CMS platforms you can choose to manage content for your blog. Here are some popular options along with their key characteristics:
+
+- **WordPress**: The most widely used CMS globally, powering over 43% of websites (according to W3Techs, 2023). WordPress is highly flexible, offering thousands of plugins and themes, making it suitable for both personal blogs and enterprise websites. It requires managing hosting, security, and updates, which might demand more effort if you're just starting out.
+- **Ghost**: A lightweight CMS focused on blogging, known for its speed and simplicity in content management. Ghost offers strong SEO support and an API for integrating content into apps. You’ll need to manage a server for the self-hosted version, or opt for the hosted version.
+- **Strapi**: An open-source headless CMS, ideal for developers who want full control over API and UI customization. Strapi delivers content in JSON format, but setting it up and maintaining it requires technical expertise.
+- **Contentful**: A powerful headless CMS focused on delivering content via API. Contentful is great for complex projects, though its pricing (starting at $300/month for the basic plan) might be a consideration for smaller projects.
+
+Each CMS has its own strengths, depending on your needs and technical skills. For instance, WordPress is excellent if you're looking for a robust system with a large community, while Ghost might be preferable for a lightweight, SEO-optimized solution.
+
+### 2. Why Choose Notion as a CMS for Your Blog?
+**Notion** has become a popular choice across diverse communities, including students, professionals, and businesses using it for project management. Here’s why Notion can be a compelling CMS choice for your blog:
+
+- **User-Friendly and Free for Individuals**: Notion offers an intuitive drag-and-drop interface, allowing you to create content without coding knowledge. The free plan is robust for personal projects, with a 5MB upload limit per file (as per Notion’s policy, 2023).
+- **All-in-One Platform**: With Notion, you can manage your blog content, notes, schedules, and even databases in one place. For example, you can create a database to store all your blog posts and retrieve them via API for display.
+- **Serverless**: Notion hosts your data in the cloud, so you don’t need to worry about hosting, security, or software updates—tasks often required by CMS platforms like WordPress or self-hosted Ghost.
+- **Powerful API**: The **Notion API** lets you retrieve content in JSON format, making it easy to integrate into any application. For instance, when used with server-side rendering frameworks like Next.js or Nuxt, the structured data can be rendered into SEO-friendly HTML, ensuring better visibility on search engines.
+
+### 3. How Does the Notion API Return Data?
+When you call the **Notion API** to retrieve content (e.g., the content of a page), the data is returned as a list of **blocks**—individual content units like paragraphs, headings, images, or tables. Here’s an example of a response from the API:
+
+```json
+[
+  {
+    "object": "block",
+    "id": "c02fc1d3-db8b-45c5-a222-27595b15aea7",
+    "parent": {
+      "type": "page_id",
+      "page_id": "59833787-2cf9-4fdf-8782-e53db20768a5"
+    },
+    "created_time": "2022-03-01T19:05:00.000Z",
+    "last_edited_time": "2022-07-06T19:41:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "ee5f0f84-409a-440f-983a-a5315961c6e4"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "ee5f0f84-409a-440f-983a-a5315961c6e4"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Lacinato kale",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "green"
+          },
+          "plain_text": "Lacinato kale",
+          "href": null
+        }
+      ],
+      "color": "default",
+      "is_toggleable": false
+    }
+  }
+]
+```
+
+- **Data Structure**: Each block has a `type` (block type) and corresponding data (e.g., `rich_text` for text, `url` for images). While this structure is flexible, it can be complex since you need to handle each block type individually to render it into UI components.
+- **Challenge**: Rendering this data in React manually requires parsing each block’s type and converting it into components (e.g., `<h1>`, `<p>`, `<img>`), which can be time-consuming, especially with many block types.
+
+### 4. The Role of Notion-Mapper
+This is where **Notion-Mapper** comes in handy:
+
+- **Automated Mapping**: The library handles the entire process of parsing and mapping Notion blocks to React components, saving you time and effort.
+- **Comprehensive Support**: It supports most common Notion block types, from paragraphs, headings, lists, images to tables and code blocks.
+- **Simplified Integration**: With the `blockMapper` function, you can render all your content from Notion in just one line of code, without writing separate logic for each block type.
+
+For example, instead of manually writing logic like this:
+
+```typescript
+if (block.type === "paragraph") {
+  return <p>{block.paragraph.rich_text[0].text.content}</p>;
+} else if (block.type === "heading_1") {
+  return <h1>{block.heading_1.rich_text[0].text.content}</h1>;
+} // ... and other block types
+```
+
+You can simply use:
+
+```typescript
+{blocks.map((block) => blockMapper(block))}
+```
+
+---
+
+## 🚀 Key Features
+
+- **Automatic Mapping**: Convert **Notion blocks** to **React components** with a single line of code.
+- **Broad Support**: Covers most Notion block types.
+- **Seamless Integration**: Works well in any React project.
+- **Flexible Customization**: Use default components or customize as needed.
+- **TypeScript Support**: Includes full type definitions for safer and cleaner code.
+
+---
+
+## 📦 Installation
+
+Install the library via NPM with this command:
+
+```bash
 npm install notion-mapper
+```
 
-Or with Yarn:
+Or if you use Yarn:
 
 ```bash
 yarn add notion-mapper
 ```
 
-## Usage
+---
 
-### Basic Example
+## 🛠️ Usage
+
+### 1. Quick Mapping with `blockMapper`
+
+The `blockMapper` function helps you render an entire list of Notion blocks:
+
+```typescript
+import { blockMapper } from "notion-mapper";
+import { NotionBlock } from "notion-mapper/types";
+
+const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
+  return (
+    <div>
+      {blocks.map((block) => blockMapper(block))}
+    </div>
+  );
+};
+```
+
+### 2. Customizing with Individual Components
+
+If you want to customize, you can import specific components:
+
+```typescript
+import { Paragraph, Heading } from "notion-mapper";
+import { NotionBlock } from "notion-mapper/types";
+
+const CustomBlock = ({ block }: { block: NotionBlock }) => {
+  if (block.type === "paragraph") {
+    return <Paragraph block={block} />;
+  } else if (block.type.startsWith("heading")) {
+    return <Heading block={block} />;
+  }
+  return null;
+};
+```
+
+---
+
+## 📚 Real-World Example
+
+Here’s how to fetch data from Notion and display it in React:
 
 ```typescript
 import { useEffect, useState } from "react";
-import { NotionBlock, blockMapper } from "notion-mapper";
+import { blockMapper } from "notion-mapper";
+import { NotionBlock } from "notion-mapper/types";
 
-interface PageData {
-  id: string;
-  title: string;
-  content: NotionBlock[];
-}
-
-function App() {
-  const [page, setPage] = useState<PageData | null>(null);
+const BlogPage = () => {
+  const [blocks, setBlocks] = useState<NotionBlock[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("YOUR_NOTION_API_ENDPOINT");
-      // Example:
-      // const response = await fetch(
-      //   "/api/posts/19f9c9aa356180358b65fe657f6ed700"
-      // );
-      const data: PageData = await response.json();
-      setPage(data);
+      const data = await fetchBlocks("your-notion-page-id"); // Mock function to fetch data from Notion API
+      setBlocks(data);
     };
     fetchData();
   }, []);
 
-  if (!page) return <div>Loading...</div>;
-
   return (
-    <div className="max-w-4xl mx-auto p-5 font-sans">
-      <h1 className="text-3xl font-bold mb-5">{page.title}</h1>
-      <div>{page.content.map((block) => blockMapper(block))}</div>
+    <div>
+      {blocks.map((block) => blockMapper(block))}
     </div>
   );
-}
-
-export default App;
+};
 ```
 
-### Prerequisites
+---
 
-- Node.js >= 18.x
-- React >= 18.x
-- Vite >= 4.x
-- Tailwind CSS (optional, for styling)
+## 🔧 Customization
 
-## Setup
-
-1. **Initialize a Vite + React + TypeScript project**:
-
-   ```bash
-   npm create vite@latest my-notion-app -- --template react-ts
-   cd my-notion-app
-   npm install
-   ```
-
-2. **Install Tailwind CSS** (if not already installed):
-
-   ```bash
-   npm install -D tailwindcss postcss autoprefixer
-   npx tailwindcss init -p
-   ```
-
-   Configure `tailwind.config.js`:
-
-   ```javascript
-   /** @type {import('tailwindcss').Config} */
-   export default {
-     content: ["./src/**/*.{js,jsx,ts,tsx}"],
-     theme: { extend: {} },
-     plugins: [],
-   };
-   ```
-
-   Add to `src/index.css`:
-
-   ```css
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
-   ```
-
-3. **Install Notion Mapper**:
-
-   ```bash
-   npm install notion-mapper
-   ```
-
-4. **Fetch Notion Data**: Integrate with your Notion API backend to retrieve block data.
-
-## Supported Notion Blocks
-
-| Block Type           | Description                      |
-| -------------------- | -------------------------------- |
-| Paragraph            | Text paragraphs                  |
-| Heading (1, 2, 3)    | Headings of different levels     |
-| Divider              | Horizontal divider               |
-| Image                | Embedded images                  |
-| Code                 | Code snippets                    |
-| Quote                | Blockquotes                      |
-| Bulleted List        | Unordered lists                  |
-| Numbered List        | Ordered lists                    |
-| To-Do                | Checkboxes                       |
-| Table                | Tables with rows                 |
-| Callout              | Notices with icons               |
-| Embed                | Embedded content (e.g., iframes) |
-| Bookmark             | Links with previews              |
-| File/Video/Audio/PDF | Media files                      |
-| Equation             | Mathematical expressions         |
-| Child Page/Database  | Nested pages or databases        |
-| And more...          | Full Notion API block support    |
-
-## Configuration
-
-### Vite Proxy (Development)
-
-To fetch data from a backend (e.g., `http://localhost:3001`), configure a proxy in `vite.config.ts`:
+You can add your own styling by wrapping components:
 
 ```typescript
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "path";
+import { Paragraph } from "notion-mapper";
 
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    proxy: {
-      "/api": {
-        target: "http://localhost:3001",
-        changeOrigin: true,
-      },
-    },
-  },
-  resolve: {
-    alias: { "@": path.resolve(__dirname, "./src") },
-  },
-});
+const CustomParagraph = ({ block }: { block: NotionBlock }) => {
+  return (
+    <div className="custom-paragraph">
+      <Paragraph block={block} />
+    </div>
+  );
+};
 ```
 
-## Contributing
+---
 
-We welcome contributions! To contribute:
+## 🤝 Contributing
 
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m "Add your feature"`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a Pull Request.
+We’d love to have your support! To contribute:
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Keywords
-
-- Notion API
-- React Component Library
-- Vite
-- TypeScript
-- Tailwind CSS
-- Notion Blocks Renderer
-
-## Contact
-
-For issues or suggestions, please open an issue on our [GitHub repository](https://github.com/slogvo/notion-mapper).
+1. Fork the repository on GitHub.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m "Add XYZ feature"`).
+4. Submit a pull request to the `main` branch.
