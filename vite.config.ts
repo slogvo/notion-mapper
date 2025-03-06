@@ -46,7 +46,8 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
         name: "NotionMapper",
-        fileName: (format) => `index.${format === "es" ? "mjs" : "js"}`,
+        // fileName: (format) => `index.${format === "es" ? "mjs" : "js"}`,
+        fileName: (format) => `index.${format}.js`,
       },
       rollupOptions: {
         external: ["react", "react-dom"],
