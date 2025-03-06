@@ -6,4 +6,5 @@ export interface ParagraphBlock extends BaseBlock {
     rich_text: RichText[];
     color: string;
   };
+  children?: BaseBlock[]
 }

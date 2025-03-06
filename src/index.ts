@@ -20,6 +20,7 @@ export { Audio } from "./components/Audio";
 export { PDF } from "./components/PDF";
 export { Equation } from "./components/Equation";
 export { ChildPage } from "./components/ChildPage";
+export { Children } from "./components/Children";
 export { ChildDatabase } from "./components/ChildDatabase";
 export { LinkPreview } from "./components/LinkPreview";
 export { Column } from "./components/Column";

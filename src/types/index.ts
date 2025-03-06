@@ -6,6 +6,7 @@ import { BulletedListItemBlock } from "./bulletedListItem.types";
 import { CalloutBlock } from "./callout.types";
 import { ChildDatabaseBlock } from "./childDatabase.types";
 import { ChildPageBlock } from "./childPage.types";
+import { ChildrenBlock } from "./children.types";
 import { CodeBlock } from "./code.types";
 import { ColumnBlock } from "./column.types";
 import { ColumnListBlock } from "./columnList.types";
@@ -48,8 +49,9 @@ export type NotionBlock =
   | AudioBlock
   | PDFBlock
   | EquationBlock
-  | ChildPageBlock
   | ChildDatabaseBlock
+  | ChildPageBlock
+  | ChildrenBlock
   | LinkPreviewBlock
   | ColumnBlock
   | ColumnListBlock
