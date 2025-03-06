@@ -62,5 +62,5 @@ jobs:
       # Step 9: Publish to npm (using pnpm)
       - name: Publish to npm
         run: pnpm publish --no-git-checks
-        pnpm publish --access public --no-git-checks
+        # pnpm publish --access public --no-git-checks
         # npm unpublish react-notion-blocks@1.0.0 --force

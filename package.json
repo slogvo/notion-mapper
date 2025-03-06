@@ -1,16 +1,19 @@
 {
   "name": "react-notion-blocks",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "type": "module",
   "description": "A library for mapping Notion blocks to React components",
+  "author": "Your Name",
+  "license": "MIT",
   "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
   "module": "dist/index.js",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.js",
-    "default": "./dist/index.mjs"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
-  "types": "./dist/index.d.ts",
   "keywords": [
     "notion",
     "notion-blog",
@@ -28,8 +31,6 @@
     "type": "git",
     "url": "git+https://github.com/slogvo/notion-mapper"
   },
-  "author": "Long Vo",
-  "license": "MIT",
   "files": [
     "dist",
     "dist/**/*"
