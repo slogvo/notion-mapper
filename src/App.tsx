@@ -18,7 +18,7 @@ function App() {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          `${apiUrl}/api/posts/19f9c9aa-3561-8054-bafc-e42c1fc4ac74`
+          `${apiUrl}/api/posts/jsx-la-gi-va-tai-sao-chung-ta-lai-su-dung-jsx-trong-react`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

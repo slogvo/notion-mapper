@@ -1,4 +1,6 @@
 // src/index.ts
+import './styles/index.css';
+
 export { RichText } from "./components/RichText";
 export { Paragraph } from "./components/Paragraph";
 export { Heading } from "./components/Heading";

@@ -46,7 +46,6 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
         name: "NotionMapper",
-        // fileName: (format) => `index.${format === "es" ? "mjs" : "js"}`,
         fileName: (format) => `index.${format}.js`,
       },
       rollupOptions: {
@@ -56,8 +55,15 @@ export default defineConfig(({ mode }) => {
             react: "React",
             "react-dom": "ReactDOM",
           },
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+              return 'index.css';
+            }
+            return assetInfo.name || 'assets/[name]-[hash][extname]';
+          },
         },
       },
+      cssCodeSplit: false, // This ensures all CSS is bundled into a single file
     },
   };
 });
