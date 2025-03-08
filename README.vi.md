@@ -14,7 +14,7 @@ pnpm add react-notion-blocks
 ```
 
 ### Cấu hình Tailwind CSS
-Thêm dòng sau vào file `tailwind.config.ts` để tích hợp styles từ thư viện:
+Thêm dòng sau vào file `tailwind.config.ts` để không bị mất các style Tailwind được dùng trong thư viện này, khi mà ứng dụng của bạn có thể chưa dùng đến các lớp Class đó khi nào (do cơ chế Purge)
 
 ```typescript
 content: [
@@ -49,7 +49,7 @@ const BlogPage = () => {
   const [blocks, setBlocks] = useState<NotionBlock[]>([]);
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchBlocks("your-notion-page-id"); // Hàm gọi Notion API
+      const data = await fetchBlocks("your-api-return-blocks");
       setBlocks(data);
     }
     fetchData();
@@ -94,10 +94,18 @@ export default CustomParagraph;
 
 ---
 
+## 📦 Dependencies
+
+Thư viện tích hợp sẵn các dependencies sau:
+
+- **better-react-mathjax** (`^2.1.0`) - Hỗ trợ hiển thị công thức toán học với MathJax.
+- **prismjs** (`^1.29.0`) - Dùng để highlight code trong các block code.
+---
+
 ## 🤝 Đóng góp
 
 1. Fork repo trên GitHub.
 2. Tạo branch: `git checkout -b feature/your-feature`.
 3. Commit: `git commit -m "your-feature"`.
 4. Gửi pull request về branch `main`.
-```
+

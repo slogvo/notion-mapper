@@ -1,8 +1,9 @@
 # React Notion Blocks
 
-**[English](#)** *(See [README.md](README.md) for English version)*
+**[Tiếng_Việt](#)** *(Xem tại [README.vi.md](README.vi.md) cho bản Tiếng Việt)*
 
-**React Notion Blocks** helps you quickly convert **Notion blocks** into **React components**. Perfect for **blogs**, **portfolios**, or **build-in-public** projects integrated with the **Notion API**. Supports everything from paragraphs, headings, and images to tables and code blocks.
+
+**React Notion Blocks** helps you quickly convert **Notion blocks** into **React components**. Perfect for **blogs**, **portfolios**, or **build-in-public** projects integrated with **Notion API**. Supports everything from paragraphs, headings, and images to tables and code blocks.
 
 ---
 
@@ -14,7 +15,7 @@ pnpm add react-notion-blocks
 ```
 
 ### Tailwind CSS Configuration
-Add the following line to your `tailwind.config.ts` file to integrate styles from the library:
+Add the following line to your `tailwind.config.ts` file to ensure Tailwind styles used in this library are not removed by PurgeCSS:
 
 ```typescript
 content: [
@@ -36,9 +37,9 @@ const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
 export default MyPage;
 ```
 
-**Next.js Note**: Add `"use client"` since the library runs on the client side.
+**Note for Next.js users**: Add `"use client"` because this library runs on the client side.
 
-### Real-World Example
+### Real-world Example
 ```typescript
 "use client";
 
@@ -49,7 +50,7 @@ const BlogPage = () => {
   const [blocks, setBlocks] = useState<NotionBlock[]>([]);
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchBlocks("your-notion-page-id"); // Function to call Notion API
+      const data = await fetchBlocks("your-api-return-blocks");
       setBlocks(data);
     }
     fetchData();
@@ -62,16 +63,25 @@ export default BlogPage;
 
 ---
 
+## 📦 Dependencies
+
+This library includes the following dependencies:
+
+- **better-react-mathjax** (`^2.1.0`) - Supports rendering mathematical formulas using MathJax.
+- **prismjs** (`^1.29.0`) - Used for syntax highlighting in code blocks.
+
+---
+
 ## 🌟 Why Choose This Library?
 
-- **Automatic Mapping**: Convert Notion blocks to React components with just one line of code.
-- **Wide Support**: Nearly all Notion block types (paragraphs, headings, images, etc.).
-- **Easy Integration**: Fits seamlessly into any React project, with TypeScript support.
+- **Automatic Mapping**: Converts Notion blocks into React components with just one line of code.
+- **Wide Support**: Supports almost all Notion block types (paragraphs, headings, images, etc.).
+- **Easy Integration**: Suitable for any React project, with TypeScript support.
 
 ### Why Use Notion as a CMS?
-- **Free and User-Friendly**: Free personal plan with a drag-and-drop interface.
-- **No Server Needed**: Cloud-hosted storage.
-- **Flexible API**: Retrieve content as JSON for easy integration.
+- **Free & User-Friendly**: Free personal plan with an intuitive drag-and-drop interface.
+- **No Server Required**: Cloud-based storage.
+- **Flexible API**: Fetches content in JSON format, easy to integrate.
 
 ---
 
@@ -96,8 +106,8 @@ export default CustomParagraph;
 
 ## 🤝 Contributing
 
-1. Fork the repo on GitHub.
+1. Fork the repository on GitHub.
 2. Create a branch: `git checkout -b feature/your-feature`.
 3. Commit your changes: `git commit -m "your-feature"`.
 4. Submit a pull request to the `main` branch.
-```
+
