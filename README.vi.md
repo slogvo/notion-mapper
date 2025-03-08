@@ -13,13 +13,21 @@
 pnpm add react-notion-blocks
 ```
 
+### Cấu hình Tailwind CSS
+Thêm dòng sau vào file `tailwind.config.ts` để tích hợp styles từ thư viện:
+
+```typescript
+content: [
+  ...
+  './node_modules/react-notion-blocks/**/*.{js,ts,jsx,tsx,css}',
+],
+```
+
 ### Sử dụng cơ bản
 ```typescript
 "use client"; // Thêm nếu dùng Next.js
 
-import { blockMapper } from "react-notion-blocks";
-import "react-notion-blocks/styles.css"; // Import CSS cho Tailwind
-import { NotionBlock } from "react-notion-blocks/types";
+import { blockMapper, type NotionBlock } from 'react-notion-blocks';
 
 const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
   return <div>{blocks.map((block) => blockMapper(block))}</div>;
@@ -35,9 +43,7 @@ export default MyPage;
 "use client";
 
 import { useEffect, useState } from "react";
-import { blockMapper } from "react-notion-blocks";
-import "react-notion-blocks/styles.css";
-import { NotionBlock } from "react-notion-blocks/types";
+import { blockMapper, type NotionBlock } from 'react-notion-blocks';
 
 const BlogPage = () => {
   const [blocks, setBlocks] = useState<NotionBlock[]>([]);
@@ -75,9 +81,7 @@ export default BlogPage;
 ```typescript
 "use client";
 
-import { Paragraph } from "react-notion-blocks";
-import "react-notion-blocks/styles.css";
-import { NotionBlock } from "react-notion-blocks/types";
+import { Paragraph, type NotionBlock } from 'react-notion-blocks';
 
 const CustomParagraph = ({ block }: { block: NotionBlock }) => (
   <div className="custom-paragraph">
@@ -96,3 +100,4 @@ export default CustomParagraph;
 2. Tạo branch: `git checkout -b feature/your-feature`.
 3. Commit: `git commit -m "your-feature"`.
 4. Gửi pull request về branch `main`.
+```

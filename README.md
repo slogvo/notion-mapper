@@ -1,8 +1,8 @@
 # React Notion Blocks
 
-**[Vietnamese](#)** *(See [README.vn.md](README.vn.md) for Vietnamese version)*
+**[English](#)** *(See [README.md](README.md) for English version)*
 
-**React Notion Blocks** lets you quickly convert **Notion blocks** into **React components**. Perfect for **blogs**, **portfolios**, or **build in public** projects integrating with the **Notion API**. Supports paragraphs, headings, images, tables, code, and more.
+**React Notion Blocks** helps you quickly convert **Notion blocks** into **React components**. Perfect for **blogs**, **portfolios**, or **build-in-public** projects integrated with the **Notion API**. Supports everything from paragraphs, headings, and images to tables and code blocks.
 
 ---
 
@@ -13,13 +13,21 @@
 pnpm add react-notion-blocks
 ```
 
+### Tailwind CSS Configuration
+Add the following line to your `tailwind.config.ts` file to integrate styles from the library:
+
+```typescript
+content: [
+  ...
+  './node_modules/react-notion-blocks/**/*.{js,ts,jsx,tsx,css}',
+],
+```
+
 ### Basic Usage
 ```typescript
 "use client"; // Add this if using Next.js
 
-import { blockMapper } from "react-notion-blocks";
-import "react-notion-blocks/styles.css"; // Import CSS for Tailwind
-import { NotionBlock } from "react-notion-blocks/types";
+import { blockMapper, type NotionBlock } from 'react-notion-blocks';
 
 const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
   return <div>{blocks.map((block) => blockMapper(block))}</div>;
@@ -28,22 +36,20 @@ const MyPage = ({ blocks }: { blocks: NotionBlock[] }) => {
 export default MyPage;
 ```
 
-**Next.js Note**: Add `"use client"` since the library runs client-side.
+**Next.js Note**: Add `"use client"` since the library runs on the client side.
 
 ### Real-World Example
 ```typescript
 "use client";
 
 import { useEffect, useState } from "react";
-import { blockMapper } from "react-notion-blocks";
-import "react-notion-blocks/styles.css";
-import { NotionBlock } from "react-notion-blocks/types";
+import { blockMapper, type NotionBlock } from 'react-notion-blocks';
 
 const BlogPage = () => {
   const [blocks, setBlocks] = useState<NotionBlock[]>([]);
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchBlocks("your-notion-page-id"); // Replace with your Notion API call
+      const data = await fetchBlocks("your-notion-page-id"); // Function to call Notion API
       setBlocks(data);
     }
     fetchData();
@@ -56,28 +62,26 @@ export default BlogPage;
 
 ---
 
-## 🌟 Why Use This Library?
+## 🌟 Why Choose This Library?
 
-- **Auto-Mapping**: Turns Notion blocks into React components in one line.
-- **Broad Support**: Covers nearly all Notion block types (paragraphs, headings, images, etc.).
-- **Easy Integration**: Works with any React project, includes TypeScript support.
+- **Automatic Mapping**: Convert Notion blocks to React components with just one line of code.
+- **Wide Support**: Nearly all Notion block types (paragraphs, headings, images, etc.).
+- **Easy Integration**: Fits seamlessly into any React project, with TypeScript support.
 
-### Why Notion as a CMS?
-- **Free & Simple**: Free personal plan with a drag-and-drop interface.
-- **Serverless**: Hosted in the cloud.
-- **Flexible API**: Fetch content as JSON for seamless integration.
+### Why Use Notion as a CMS?
+- **Free and User-Friendly**: Free personal plan with a drag-and-drop interface.
+- **No Server Needed**: Cloud-hosted storage.
+- **Flexible API**: Retrieve content as JSON for easy integration.
 
 ---
 
 ## 🛠️ Customization
 
-### Using Individual Components
+### Using Custom Components
 ```typescript
 "use client";
 
-import { Paragraph } from "react-notion-blocks";
-import "react-notion-blocks/styles.css";
-import { NotionBlock } from "react-notion-blocks/types";
+import { Paragraph, type NotionBlock } from 'react-notion-blocks';
 
 const CustomParagraph = ({ block }: { block: NotionBlock }) => (
   <div className="custom-paragraph">
@@ -94,5 +98,6 @@ export default CustomParagraph;
 
 1. Fork the repo on GitHub.
 2. Create a branch: `git checkout -b feature/your-feature`.
-3. Commit changes: `git commit -m "Add your-feature"`.
+3. Commit your changes: `git commit -m "your-feature"`.
 4. Submit a pull request to the `main` branch.
+```
