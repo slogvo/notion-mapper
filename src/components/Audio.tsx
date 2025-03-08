@@ -2,8 +2,8 @@ import { AudioBlock } from "../types/audio.types";
 import { RichText } from "./RichText";
 
 export const Audio = ({ block }: { block: AudioBlock }) => (
-  <div className="my-5">
-    <audio controls className="w-full">
+  <div className="notion-audio my-5">
+    <audio controls className="notion-audio__player w-full">
       <source
         src={
           block.audio.type === "external"
@@ -13,7 +13,7 @@ export const Audio = ({ block }: { block: AudioBlock }) => (
       />
     </audio>
     {block.audio.caption.length > 0 && (
-      <div className="text-sm text-gray-600 mt-2">
+      <div className="notion-audio__caption text-sm mt-2">
         <RichText richText={block.audio.caption} />
       </div>
     )}

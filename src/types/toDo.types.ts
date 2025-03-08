@@ -6,5 +6,6 @@ export interface ToDoBlock extends BaseBlock {
     rich_text: RichText[];
     checked: boolean;
     color: string;
+    children?: BaseBlock[];
   };
 }

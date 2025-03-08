@@ -9,6 +9,18 @@ interface PageData {
   content: NotionBlock[];
 }
 
+const ContentRenderer = ({ blocks }: { blocks: NotionBlock[] }) => {
+  return (
+    <>
+      {blocks.map((block) => (
+        <Fragment key={block.id}>
+          {blockMapper(block)}
+        </Fragment>
+      ))}
+    </>
+  );
+};
+
 function App() {
   const apiUrl = import.meta.env.VITE_API_ENDPOINT;
   const [page, setPage] = useState<PageData | null>(null);
@@ -18,7 +30,7 @@ function App() {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          `${apiUrl}/api/posts/jsx-la-gi-va-tai-sao-chung-ta-lai-su-dung-jsx-trong-react`
+          `${apiUrl}/api/posts/cac-kieu-kien-truc-api-pho-bien-nhat-hien-nay`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -41,11 +53,7 @@ function App() {
     <div className="max-w-4xl mx-auto p-5 font-sans">
       <h1 className="text-3xl font-bold mb-5">{page.title}</h1>
       <div className="content">
-        {page.content.map((block) => (
-          <Fragment key={block.id}>
-            {blockMapper(block)}
-          </Fragment>
-        ))}
+        <ContentRenderer blocks={page.content} />
       </div>
     </div>
   );

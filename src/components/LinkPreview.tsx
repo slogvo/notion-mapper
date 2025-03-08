@@ -3,7 +3,7 @@ import { LinkPreviewBlock } from "../types/linkPreview.types";
 export const LinkPreview = ({ block }: { block: LinkPreviewBlock }) => (
   <a
     href={block.link_preview.url}
-    className="text-blue-500 hover:underline my-5"
+  className="notion-link-preview text-primary dark:text-primary-300 hover:underline"
     target="_blank"
     rel="noopener noreferrer"
   >

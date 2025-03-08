@@ -30,10 +30,12 @@ import { Breadcrumb } from "../components/Breadcrumb";
 import { TableOfContents } from "../components/TableOfContents";
 import { LinkToPage } from "../components/LinkToPage";
 
+const FallbackBlock = (): ReactNode => `<div>Invalid Block</div>`;
+
 export const blockMapper = (block: NotionBlock | undefined | null): ReactNode => {
   if (!block || typeof block !== "object" || !block.type) {
     console.error("Invalid block:", block);
-    return null;
+    return FallbackBlock(); 
   }
 
   const blockType = block.type;
@@ -43,7 +45,7 @@ export const blockMapper = (block: NotionBlock | undefined | null): ReactNode =>
   
   if (!hasData && !specialBlocks.includes(blockType)) {
     console.error(`Block data for type "${blockType}" is undefined:`, block);
-    return null;
+    return FallbackBlock();
   }
 
   switch (blockType) {
@@ -68,7 +70,7 @@ export const blockMapper = (block: NotionBlock | undefined | null): ReactNode =>
     case "to_do":
       return ToDo({ block: block });
     case "table":
-      return Table();
+      return Table({ block: block });
     case "table_row":
       return TableRow({ block: block });
     case "callout":
@@ -94,19 +96,19 @@ export const blockMapper = (block: NotionBlock | undefined | null): ReactNode =>
     case "link_preview":
       return LinkPreview({ block: block });
     case "column":
-      return Column();
+      return Column({ block: block });
     case "column_list":
-      return ColumnList();
+      return ColumnList({ block: block });
     case "synced_block":
-      return SyncedBlock();
+      return SyncedBlock({ block: block });
     case "breadcrumb":
-      return Breadcrumb();
+      return Breadcrumb({ block: block });
     case "table_of_contents":
       return TableOfContents();
     case "link_to_page":
       return LinkToPage({ block: block });
     default:
       console.warn(`Unsupported block type: ${blockType}`);
-      return null;
+      return FallbackBlock(); 
   }
 };

@@ -1,4 +1,3 @@
-// src/modules/notion-blocks/components/Paragraph.tsx
 import { ParagraphBlock } from "../types/paragraph.types";
 import { Children } from "./Children";
 import { RichText } from "./RichText";
@@ -10,11 +9,15 @@ export const Paragraph = ({ block }: { block: ParagraphBlock }) => {
   }
 
   return (
-    <div>
-      <p className="text-base leading-relaxed mb-4">
+    <div className="notion-paragraph">
+      <p className="notion-paragraph__text text-base leading-relaxed mb-4">
         <RichText richText={block.paragraph.rich_text} />
       </p>
-      {block.has_children && block.children && (<Children className="ml-4" children={block.children}/>)}
+      {block.has_children && block.children && (
+        <div className="notion-paragraph__children ml-4">
+          <Children children={block.children} />
+        </div>
+      )}
     </div>
   );
 };

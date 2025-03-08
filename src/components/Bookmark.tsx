@@ -1,11 +1,10 @@
-// src/modules/notion-blocks/components/Bookmark.tsx
 import { BookmarkBlock } from "../types/bookmark.types";
 import { RichText } from "./RichText";
 
 export const Bookmark = ({ block }: { block: BookmarkBlock }) => (
   <a
     href={block.bookmark.url}
-    className="block p-2 bg-gray-100 rounded-md text-blue-500 hover:underline my-5"
+    className="notion-bookmark block p-2 bg-gray-100 rounded-md text-primary hover:underline my-4 dark:text-primary-300"
     target="_blank"
     rel="noopener noreferrer"
   >

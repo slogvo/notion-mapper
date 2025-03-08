@@ -6,7 +6,7 @@ export const BulletedListItem = ({
 }: {
   block: BulletedListItemBlock;
 }) => (
-  <li className="list-disc list-inside my-2">
+  <li className="notion-bulleted-list-item list-disc list-inside p-2">
     <RichText richText={block.bulleted_list_item.rich_text} />
   </li>
 );
