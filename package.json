@@ -1,6 +1,6 @@
 {
   "name": "react-notion-blocks",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "A library for mapping Notion blocks to React components",
   "author": "Your Name",
